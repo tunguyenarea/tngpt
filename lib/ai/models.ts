@@ -1,5 +1,7 @@
 import { openai } from '@ai-sdk/openai';
 import { google } from '@ai-sdk/google';
+import { xai } from '@ai-sdk/xai';
+import { anthropic } from "@ai-sdk/anthropic"
 import { fireworks } from '@ai-sdk/fireworks';
 import {
   customProvider,
@@ -14,6 +16,8 @@ export const myProvider = customProvider({
     'chat-model-small': openai('gpt-4o-mini'),
     'chat-model-large': openai('gpt-4o'),
     'chat-model-gemini': google('gemini-2.0-flash-001'),
+    'chat-model-claude': anthropic('claude-3-5-haiku-latest'),
+    'chat-model-xai': xai('grok-2-1212'),
     'chat-model-reasoning': wrapLanguageModel({
       model: fireworks('accounts/fireworks/models/deepseek-r1'),
       middleware: extractReasoningMiddleware({ tagName: 'think' }),
@@ -48,6 +52,16 @@ export const chatModels: Array<ChatModel> = [
     id: 'chat-model-gemini',
     name: 'Google Gemini model',
     description: 'Gemini model for complex, multi-step tasks',
+  },
+  {
+    id: 'chat-model-claude',
+    name: 'Anthropic Claude model',
+    description: 'Claude model for complex, multi-step tasks',
+  },
+  {
+    id: 'chat-model-xai',
+    name: 'xAI Grok model',
+    description: 'Grok model for complex, multi-step tasks',
   },
   {
     id: 'chat-model-reasoning',
