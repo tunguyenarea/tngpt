@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
+import Header from '@/app/ui/header';
 
 import { ThemeProvider } from '@/components/theme-provider';
 
@@ -60,6 +61,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Toaster position="top-center" />
+          <Header />
           {children}
         </ThemeProvider>
       </body>
